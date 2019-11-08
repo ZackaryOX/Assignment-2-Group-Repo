@@ -61,3 +61,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+
+HDRP Test/Library/metadata/
+
+HDRP Test/Library/ShaderCache/
+
+HDRP Test/Library/PackageCache/

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    Player test;
+    Player Player1;
     public GameObject head;
     public Image defaultIcon;
     public Image selectedIcon;
@@ -15,8 +15,9 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        test = new Player(gameObject, head);
         hotbar = new Inventory(defaultIcon, selectedIcon, emptyItem);
+        Player1 = new Player(gameObject, head, hotbar);
+        
     }
 
     void Update()
@@ -26,7 +27,7 @@ public class Character : MonoBehaviour
 
     void LateUpdate()
     {
-        test.Update();
+        Player1.Update();
     }
 
 }

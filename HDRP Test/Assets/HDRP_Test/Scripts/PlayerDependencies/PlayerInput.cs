@@ -57,10 +57,10 @@ public class PlayerInput
     Vector3 RotateCamera()
     {
         yaw = 0;
-        float _InputX = Input.GetAxis("Mouse X");
-        float ForYaw = 0;
-        ForYaw += _InputX > 0 && yaw + _InputX < MaxYaw ? _InputX : 0.0f;
-        ForYaw += _InputX < 0 && yaw - _InputX > -MaxYaw ? _InputX : 0.0f;
+        //float _InputX = Input.GetAxis("Mouse X");
+        float ForYaw = Input.GetAxis("Mouse X");
+        //ForYaw += _InputX > 0 && yaw + _InputX < MaxYaw ? _InputX : 0.0f;
+        //ForYaw += _InputX < 0 && yaw - _InputX > -MaxYaw ? _InputX : 0.0f;
 
         float _InputY = Input.GetAxis("Mouse Y");
         float ForPitch = 0;
@@ -174,10 +174,11 @@ public class PlayerInput
 
 
 
-    public void Update()
+    public void Update(Stamina playerstam)
     {
         int Vertical = 0;
         int Horizontal = 0;
+        int Running = 0;
 
         float CurrentSpeed = 0;
         Vector3 Tempjumpvec;
@@ -186,6 +187,7 @@ public class PlayerInput
         Vertical -= GetInput(KeyCode.S);
         Horizontal += GetInput(KeyCode.D);
         Horizontal -= GetInput(KeyCode.A);
+        Running += GetInput(KeyCode.LeftShift);
 
 
         ComputeJump();
@@ -200,6 +202,11 @@ public class PlayerInput
 
         //Reduces diagonal speed if A/D + W/S are pressed together
         CurrentSpeed = Vertical != 0 && Horizontal != 0 ? Speed / 2 : Speed;
+
+
+        CurrentSpeed = Running > 0 ? CurrentSpeed * playerstam.DecreaseStam(Time.deltaTime) : CurrentSpeed;
+        playerstam.IncreaseStam(Time.deltaTime, Mathf.Abs(Vertical) + Mathf.Abs(Horizontal));
+
 
         HorizontalVelocity = CheckVelocity(HorizontalVelocity);
         VerticalVelocity = CheckVelocity(VerticalVelocity);

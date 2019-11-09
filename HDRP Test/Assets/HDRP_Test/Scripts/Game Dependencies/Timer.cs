@@ -6,10 +6,11 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Text GameTime;
+    Text GameTime;
     public static float ElapsedTime = 0;
     void Start()
     {
+        GameTime = GetComponent<Text>();
     }
 
     // Update is called once per frame

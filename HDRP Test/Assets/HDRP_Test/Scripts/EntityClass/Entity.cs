@@ -12,6 +12,8 @@ public class Entity
         this.Trans = thisobject.transform;
         Objects++;
         this.ID = Objects - 1;
+        this.Name = "Entity" + ID.ToString();
+        ThisObject.name = this.Name;
 
     }
     //Public
@@ -32,6 +34,11 @@ public class Entity
     {
         return this.Trans.rotation;
     }
+    public string GetName()
+    {
+
+        return this.Name;
+    }
     public void SetPosition(Vector3 temp)
     {
         this.Trans.position = temp;
@@ -42,7 +49,7 @@ public class Entity
     }
     void SetRotationQuat(Quaternion temp)
     {
-        
+
     }
 
     public virtual void Update()
@@ -53,8 +60,9 @@ public class Entity
 
 
     //Private
-    private GameObject ThisObject;
-    private int ID = 0;
-    private Transform Trans;
+    protected GameObject ThisObject;
+    protected int ID = 0;
+    protected Transform Trans;
+    protected string Name;
 
 }

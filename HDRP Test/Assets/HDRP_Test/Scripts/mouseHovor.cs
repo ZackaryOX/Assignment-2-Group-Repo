@@ -4,36 +4,92 @@ using UnityEngine;
 
 public class mouseHovor : MonoBehaviour
 {
-    Vector4 defaultColor;
-    Vector4 newColor;
-    bool mouseOver = false;
-   // bool switchBool = false;
+
+
+    public Material NewMat;
+    public GameObject Object;
     public GameObject lookingAt;
+    private Vector3 origRotation;
+
+    MeshRenderer Rend;
+    Material OldMat;
+
+    public bool mouseOver = false;
+    public static bool MovingStuff = false;
+    public static GameObject ObjectMoving;
+
+
     void Awake()
     {
-        defaultColor = GetComponent<Renderer>().material.GetVector("_Color2");
-        newColor = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+        //ObjectMoving = this.gameObject;
+        Rend = GetComponent<MeshRenderer>();
+        OldMat = Rend.material;
+    }
+
+    float ReturnGridPos(float x)
+    {
+        float gridtolockto = 0.25f;
+
+        float posToSet = x;
+
+        if (posToSet > 0)
+        {
+            posToSet /= gridtolockto;
+            posToSet += 0.5f;
+            float roundedX = (int)posToSet;
+            roundedX *= gridtolockto;
+            posToSet = roundedX;
+        }
+        else if (posToSet < 0)
+        {
+            posToSet /= gridtolockto;
+            posToSet -= 0.5f;
+            float roundedX = (int)posToSet;
+            roundedX *= gridtolockto;
+            posToSet = roundedX;
+        }
+
+        return posToSet;
     }
 
     void Update()
     {
-       if(mouseOver == true)
+        lookingAt = GameObject.Find(rayFromCamera.lookingAt);
+
+
+        if (mouseOver && !MovingStuff)
         {
-            lookingAt.GetComponent<Renderer>().material.SetVector("_Color2", newColor);
+
+            Rend.material = NewMat;
+            if (Input.GetKey(KeyCode.E))
+            {
+                //MovingStuff = true;
+                //ObjectMoving = lookingAt;
+
+            }
         }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            MovingStuff = false;
+            return;
+        }
+
+
     }
 
     void OnMouseOver()
     {
         lookingAt = GameObject.Find(rayFromCamera.lookingAt);
         mouseOver = true;
-        //if (mouseOver == true && switchBool == false)
-        //{
-            //GetComponent<Renderer>().material.SetVector("_Color2", newColor);
-            //switchBool = false;
-        //}else{
-        //    switchBool = true;
-        //}
+
+        origRotation = Camera.main.transform.eulerAngles;
+
+        Camera.main.transform.eulerAngles = -origRotation;
+
+        //ADD ROTATION TO VECTOR 3
+        Vector3 newrotation = origRotation + new Vector3(0, 0, 0);
+        Camera.main.transform.eulerAngles = newrotation;
 
     }
 
@@ -41,15 +97,14 @@ public class mouseHovor : MonoBehaviour
 
     void OnMouseExit()
     {
+
         mouseOver = false;
-        //if (mouseOver == false && switchBool == true)
-        //{
-            lookingAt.GetComponent<Renderer>().material.SetVector("_Color2", defaultColor);
-        //    switchBool = true;
-        //}else{
-        //    switchBool = false;
-        //}
-       
+        if (!MovingStuff)
+        {
+            Rend.material = OldMat;
+        }
+
+
     }
 
 }

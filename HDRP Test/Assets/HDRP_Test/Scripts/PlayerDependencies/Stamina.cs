@@ -34,7 +34,7 @@ public class Stamina
     {
         float Returnval = 0;
 
-        float Deduction = CurrentStam >= Decrease ? 1 : 0;
+        float Deduction = CurrentStam >= Decrease * deltatime ? 1 : 0;
 
         CurrentStam -= Decrease * deltatime * Deduction;
 
@@ -51,7 +51,8 @@ public class Stamina
         //the player is moving. When moving stamina regen is decreased by half.
         float StamIncr = state > 0 || state < 0 ? 1 * deltatime : 2 * deltatime;
 
-        CurrentStam += StamIncr * Regen;
+        CurrentStam = CurrentStam + StamIncr * Regen;
+        CurrentStam = CurrentStam >= MaxStam ? MaxStam : CurrentStam;
     }
 
     //PRIVATE:

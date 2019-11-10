@@ -174,7 +174,7 @@ public class PlayerInput
 
 
 
-    public void Update(Stamina playerstam)
+    public void Update(Stamina playerstam, PlayerState currentstate)
     {
         int Vertical = 0;
         int Horizontal = 0;
@@ -183,13 +183,16 @@ public class PlayerInput
         float CurrentSpeed = 0;
         Vector3 Tempjumpvec;
 
+        if(currentstate.GetWalk())
         Vertical += GetInput(KeyCode.W);
         Vertical -= GetInput(KeyCode.S);
         Horizontal += GetInput(KeyCode.D);
         Horizontal -= GetInput(KeyCode.A);
+
+        if(currentstate.GetRun())
         Running += GetInput(KeyCode.LeftShift);
 
-
+        if(currentstate.GetJump())
         ComputeJump();
 
 
@@ -205,6 +208,8 @@ public class PlayerInput
 
 
         CurrentSpeed = Running > 0 ? CurrentSpeed * playerstam.DecreaseStam(Time.deltaTime) : CurrentSpeed;
+
+        if(Running == 0)
         playerstam.IncreaseStam(Time.deltaTime, Mathf.Abs(Vertical) + Mathf.Abs(Horizontal));
 
 

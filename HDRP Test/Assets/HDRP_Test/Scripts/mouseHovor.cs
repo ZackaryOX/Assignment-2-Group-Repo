@@ -83,13 +83,7 @@ public class mouseHovor : MonoBehaviour
         lookingAt = GameObject.Find(rayFromCamera.lookingAt);
         mouseOver = true;
 
-        origRotation = Camera.main.transform.eulerAngles;
 
-        Camera.main.transform.eulerAngles = -origRotation;
-
-        //ADD ROTATION TO VECTOR 3
-        Vector3 newrotation = origRotation + new Vector3(0, 0, 0);
-        Camera.main.transform.eulerAngles = newrotation;
 
     }
 

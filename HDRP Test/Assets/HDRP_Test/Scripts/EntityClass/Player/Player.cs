@@ -68,9 +68,9 @@ public class Player : Entity
         if(Mystate.GetPickup())
         this.ThisInventory.PickupItem(PickUp.AllItems[pickupname]);
     }
-    public void UseItemInInventory(PickUp tempitem)
+    public bool UseItemInInventory(PickUp tempitem)
     {
-        this.ThisInventory.UseItem(tempitem);
+        return this.ThisInventory.UseItem(tempitem);
     }
 
     public void AttachObserver(PlayerObserver temp)

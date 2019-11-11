@@ -8,16 +8,22 @@ public class QuestManager : MonoBehaviour
     //Public
     public Image background;
     public Text text;
-    public GameObject waypoint1;
-    public GameObject waypoint2;
-    public GameObject flashlightobj;
-    private PickUp flashlight;
+    public Image tips;
 
     private List<Quest> Quests = new List<Quest>() { };
     private List<Image> Images = new List<Image>() { };
     private List<Text> Texts = new List<Text>() { };
 
+    //Quest objectives
+    public GameObject waypoint1;
+    public GameObject waypoint2;
+    public GameObject flashlightobj;
+    public Sprite waypoint1img;
+    public Sprite waypoint2img;
+    public Sprite flashlightobjimg;
+    private PickUp flashlight;
 
+    //Quests
     private WaypointQuest q1;
     private PickUpQuest q2;
     private WaypointQuest q3;
@@ -29,14 +35,15 @@ public class QuestManager : MonoBehaviour
     {
         flashlight = PickUp.AllItems[flashlightobj.name];
 
-        q1 = new WaypointQuest("Reach waypoint", waypoint1);
-        q2 = new PickUpQuest("Pick up flashlight", flashlight);
-        q3 = new WaypointQuest("Reach waypoint", waypoint2);
+        q1 = new WaypointQuest("Reach waypoint", waypoint1, waypoint1img);
+        q2 = new PickUpQuest("Pick up flashlight", flashlight, flashlightobjimg);
+        q3 = new WaypointQuest("Reach waypoint", waypoint2, waypoint2img);
 
         Quests.Add(q1);
         Quests.Add(q2);
         Quests.Add(q3);
         Quests[0].Activate();
+        tips.sprite = Quests[0].getSprite();
 
         //Create UI
         for (int i = 0; i < Quests.Count; i++)
@@ -70,12 +77,16 @@ public class QuestManager : MonoBehaviour
             }
 
             if (Quests.Count == 0)
+            {
                 this.gameObject.SetActive(false);
+                tips.gameObject.SetActive(false);
+            }
             else
+            {
                 Quests[0].Activate();
-
-            if (Images.Count != 0)
                 Images[0].color = Color.white;
+                tips.sprite = Quests[0].getSprite();
+            }
         }
 
         if (Quests.Count != 0)

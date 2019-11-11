@@ -36,9 +36,9 @@ public class Door : Interactable
             IsSlerping = true;
         }
     }
-    public void UnlockDoor(PickUp tempkey)
+    public void UnlockDoor()
     {
-            Locked = tempkey.GetID() == MyKey.GetID() ? false : Locked;
+            Locked = false;
     }
 
     public override void Update()

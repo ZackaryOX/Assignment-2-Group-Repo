@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public Image ItemImage;
+    public Sprite ItemImage;
     public PickUp ThisItem;
     // Start is called before the first frame update
     void Awake()

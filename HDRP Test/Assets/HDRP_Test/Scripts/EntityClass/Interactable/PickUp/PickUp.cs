@@ -8,7 +8,7 @@ public class PickUp : Interactable
     public static Dictionary<string, PickUp> AllItems = new Dictionary<string, PickUp>();
 
     //Constructor:
-    public PickUp(GameObject thisobject, Image tempimg) : base(thisobject)
+    public PickUp(GameObject thisobject, Sprite tempimg) : base(thisobject)
     {
         this.Name = "PickUp" + ID.ToString();
         ThisObject.name = this.Name;
@@ -17,12 +17,12 @@ public class PickUp : Interactable
     }
 
     //Public:
-    public Image GetIcon()
+    public Sprite GetIcon()
     {
         return this.Icon;
     }
 
-    public void SetImage(Image temp)
+    public void SetImage(Sprite temp)
     {
         this.Icon = temp;
     }
@@ -48,7 +48,7 @@ public class PickUp : Interactable
     }
 
     //Private:
-    private Image Icon;
+    private Sprite Icon;
     private bool Picked = false;
     private bool CanBePicked = true;
 }

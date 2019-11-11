@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 5229.459, g: 5767.0615, b: 3845.616, a: 1}
+  m_IndirectSpecularColor: {r: 5240.828, g: 5777.913, b: 3858.8381, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -262,79 +262,6 @@ RectTransform:
   m_AnchoredPosition: {x: -674, y: -135}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &274900326
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 274900329}
-  - component: {fileID: 274900328}
-  - component: {fileID: 274900327}
-  m_Layer: 5
-  m_Name: 'Flashlight '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &274900327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274900326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc8af1258f742eb4593e42ca9c8bcb1a, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &274900328
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274900326}
-  m_CullTransparentMesh: 0
---- !u!224 &274900329
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274900326}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 294468146}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -811, y: -647}
-  m_SizeDelta: {x: 85.9, y: 85.9}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &294468142
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +357,7 @@ RectTransform:
   - {fileID: 666328120}
   - {fileID: 1067780539}
   - {fileID: 822265651}
-  - {fileID: 274900329}
+  - {fileID: 896450480}
   - {fileID: 1378742264}
   - {fileID: 1632216781}
   - {fileID: 667545772}
@@ -1250,9 +1177,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 1067780541}
   text: {fileID: 822265649}
+  tips: {fileID: 896450478}
   waypoint1: {fileID: 1718876276}
   waypoint2: {fileID: 1522270587}
   flashlightobj: {fileID: 4427628075389600029}
+  waypoint1img: {fileID: 0}
+  waypoint2img: {fileID: 0}
+  flashlightobjimg: {fileID: 0}
 --- !u!4 &860004109
 Transform:
   m_ObjectHideFlags: 0
@@ -1267,6 +1198,79 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &896450477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 896450480}
+  - component: {fileID: 896450479}
+  - component: {fileID: 896450478}
+  m_Layer: 5
+  m_Name: Tips
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &896450478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896450477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &896450479
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896450477}
+  m_CullTransparentMesh: 0
+--- !u!224 &896450480
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896450477}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 294468146}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 746.48, y: -379.8}
+  m_SizeDelta: {x: 371.85, y: 272.2}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1067780538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3077,7 +3081,7 @@ GameObject:
   - component: {fileID: 2052126597}
   - component: {fileID: 2052126596}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3095,7 +3099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9733d74121e37ca45948d7132b42a072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemImage: {fileID: 274900327}
+  ItemImage: {fileID: 0}
 --- !u!114 &2052126597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6226,7 +6230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9733d74121e37ca45948d7132b42a072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemImage: {fileID: 274900327}
+  ItemImage: {fileID: 21300000, guid: fc8af1258f742eb4593e42ca9c8bcb1a, type: 3}
 --- !u!114 &4427628075389600031
 MonoBehaviour:
   m_ObjectHideFlags: 0

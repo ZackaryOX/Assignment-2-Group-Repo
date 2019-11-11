@@ -42,7 +42,7 @@ public class Inventory
                     item.SetPicked(true);
                     Items[i] = item;
                     //Change Hotbar sprite to item's sprite
-                    ItemIcons[i].GetComponent<Image>().sprite = Items[i].GetIcon().sprite;
+                    ItemIcons[i].GetComponent<Image>().sprite = Items[i].GetIcon();
                     return true;
                 }
             }

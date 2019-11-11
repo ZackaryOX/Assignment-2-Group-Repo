@@ -35,7 +35,8 @@ public class ForDoor : MonoBehaviour
 
         else if (ThisKey.GetPicked() == true && GetComponent<mouseHovor>().mouseOver == true && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            ThisDoor.UnlockDoor(ThisKey);
+            if(Player.AllPlayers[0].UseItemInInventory(ThisKey))
+                ThisDoor.UnlockDoor();
         }
         ThisDoor.Update();
     }

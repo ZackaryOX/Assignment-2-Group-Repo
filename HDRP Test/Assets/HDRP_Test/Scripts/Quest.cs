@@ -1,21 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Quest
 {
-    public GameObject objective;
-    public string questName;
-    public bool isCompleted = false;
+    protected GameObject objective;
+    protected Sprite image;
+    protected string questName;
+    protected bool isCompleted = false;
 
-    public Quest(string name, GameObject obj)
+    public Quest(string name, GameObject obj, Sprite img)
     {
         objective = obj;
         questName = name;
+        image = img;
     }
 
     public bool getCompletion() { return isCompleted; }
     public string getName() { return questName; }
+    public Sprite getSprite() { return image; }
 
     public virtual void Update()
     {
@@ -33,7 +37,7 @@ public class Quest
 public class WaypointQuest : Quest
 {
     private Vector3 Position;
-    public WaypointQuest(string name, GameObject obj) : base(name, obj)
+    public WaypointQuest(string name, GameObject obj, Sprite img) : base(name, obj, img)
     {
         Position = obj.transform.position;
         Deactivate();
@@ -61,7 +65,7 @@ public class PickUpQuest : Quest
 {
     private PickUp item;
 
-    public PickUpQuest(string name, PickUp obj) : base(name, null)
+    public PickUpQuest(string name, PickUp obj, Sprite img) : base(name, null, img)
     {
         item = obj;
         Deactivate();
@@ -88,7 +92,7 @@ public class PickUpQuest : Quest
 
 public class UseQuest : Quest
 {
-    public UseQuest(string name, GameObject obj) : base(name, obj)
+    public UseQuest(string name, GameObject obj, Sprite img) : base(name, obj, img)
     {
         Deactivate();
     }

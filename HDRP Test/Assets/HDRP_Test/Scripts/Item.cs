@@ -20,6 +20,7 @@ public class Item : MonoBehaviour
         {
             //Debug.Log(ThisItem.GetPosition());
             Player.AllPlayers[0].AddItemToInventory(ThisItem.GetName());
+            GetComponent<mouseHovor>().enabled = false;
         }
     }
 }

@@ -20,13 +20,35 @@ public class PickUp : Interactable
     public Image GetIcon()
     {
         return this.Icon;
-    } 
+    }
 
     public void SetImage(Image temp)
     {
         this.Icon = temp;
     }
+
+    public bool GetPicked()
+    {
+        return Picked;
+    }
+
+    public void SetPicked(bool temp)
+    {
+        Picked = temp;
+    }
+
+    public bool getCanBePicked()
+    {
+        return CanBePicked;
+    }
+
+    public void SetCanBePicked(bool temp)
+    {
+        CanBePicked = temp;
+    }
+
     //Private:
     private Image Icon;
-
+    private bool Picked = false;
+    private bool CanBePicked = true;
 }

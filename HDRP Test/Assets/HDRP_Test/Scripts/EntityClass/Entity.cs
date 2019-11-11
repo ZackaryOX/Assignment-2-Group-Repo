@@ -43,13 +43,17 @@ public class Entity
     {
         this.Trans.position = temp;
     }
-    void SetRotationEuler(Vector3 temp)
+    public void SetRotationEuler(Vector3 temp)
     {
         this.Trans.eulerAngles = temp;
     }
-    void SetRotationQuat(Quaternion temp)
+    public void SetRotationQuat(Quaternion temp)
     {
-
+        this.Trans.rotation = temp;
+    }
+    public void SetActive(bool temp)
+    {
+        ThisObject.SetActive(temp);
     }
 
     public virtual void Update()

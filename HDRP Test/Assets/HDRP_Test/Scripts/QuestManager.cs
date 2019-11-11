@@ -5,24 +5,40 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    public Quest q1,q2,q3;
-    private List<Quest> Quests = new List<Quest>() { };
+    //Public
     public Image background;
     public Text text;
+    public GameObject waypoint1;
+    public GameObject waypoint2;
+    public GameObject flashlightobj;
+    private PickUp flashlight;
+
+    private List<Quest> Quests = new List<Quest>() { };
     private List<Image> Images = new List<Image>() { };
     private List<Text> Texts = new List<Text>() { };
+
+
+    private WaypointQuest q1;
+    private PickUpQuest q2;
+    private WaypointQuest q3;
+    private PickUpQuest q4;
+    private UseQuest q5;
 
     // Start is called before the first frame update
     void Start()
     {
-        q1 = new Quest("Reach waypoint");
-        q2 = new Quest("Pickup flashlight");
-        q3 = new Quest("Use flashlight");
+        flashlight = PickUp.AllItems[flashlightobj.name];
+
+        q1 = new WaypointQuest("Reach waypoint", waypoint1);
+        q2 = new PickUpQuest("Pick up flashlight", flashlight);
+        q3 = new WaypointQuest("Reach waypoint", waypoint2);
 
         Quests.Add(q1);
         Quests.Add(q2);
         Quests.Add(q3);
+        Quests[0].Activate();
 
+        //Create UI
         for (int i = 0; i < Quests.Count; i++)
         {
             Images.Add(Instantiate(background, background.transform.parent));
@@ -30,14 +46,16 @@ public class QuestManager : MonoBehaviour
 
             Texts.Add(Instantiate(text, text.transform.parent));
             Texts[i].transform.localPosition = new Vector3(660, 485 - 75 * i, 0);
-            Texts[i].text = Quests[i].questName;
+            Texts[i].text = Quests[i].getName();
         }
+        Images[0].color = Color.white;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Quests[0].isCompleted == true)
+        //Remove quest if completed
+        if (Quests[0].getCompletion() == true)
         {
             Quests.RemoveAt(0);
             Images[0].transform.localPosition = new Vector3(-1000, -1000, 0);
@@ -50,7 +68,20 @@ public class QuestManager : MonoBehaviour
                 Images[i].transform.localPosition += new Vector3(0, 75, 0);
                 Texts[i].transform.localPosition += new Vector3(0, 75, 0);
             }
+
+            if (Quests.Count == 0)
+                this.gameObject.SetActive(false);
+            else
+                Quests[0].Activate();
+
+            if (Images.Count != 0)
+                Images[0].color = Color.white;
         }
-        Images[0].color = Color.white;
+
+        if (Quests.Count != 0)
+        {
+            //Check only top quest
+            Quests[0].Update();
+        }
     }
 }

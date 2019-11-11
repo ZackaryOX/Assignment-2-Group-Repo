@@ -9,7 +9,7 @@ public class Inventory
     //Constructor:
     public Inventory(Image Slot, Image Selected, Image emptyIcon)
     {
-        //Set defauts
+        //Set defaut images
         noItemIcon = emptyIcon;
         notSelectedIcon = Slot;
         selectedIcon = Selected;
@@ -32,14 +32,19 @@ public class Inventory
     //Public:
     public bool PickupItem(PickUp item)
     {
-        for (int i = 0; i < 10; i++)
+        if (item.getCanBePicked() == true)
         {
-            if (Items[i] == null)
+            for (int i = 0; i < 10; i++)
             {
-                Items[i] = item;
-                //Change Hotbar sprite to item's sprite
-                ItemIcons[i].GetComponent<Image>().sprite = Items[i].GetIcon().sprite;
-                return true;
+                if (Items[i] == null)
+                {
+                    item.SetPosition(new Vector3(-100, -100, -100));
+                    item.SetPicked(true);
+                    Items[i] = item;
+                    //Change Hotbar sprite to item's sprite
+                    ItemIcons[i].GetComponent<Image>().sprite = Items[i].GetIcon().sprite;
+                    return true;
+                }
             }
         }
         return false;
@@ -49,6 +54,7 @@ public class Inventory
     {
         if (Items[selected] == temp)
         {
+            Items[selected].SetActive(false);
             Items[selected] = null;
             //Change image to none
             ItemIcons[selected].GetComponent<Image>().sprite = noItemIcon.sprite;
@@ -61,6 +67,8 @@ public class Inventory
     public void Select(int temp)
     {
         //Change previously selected to none
+        if (Items[selected] != null)
+            Items[selected].SetPosition(new Vector3(-100, -100, -100));
         Slots[selected].GetComponent<Image>().sprite = notSelectedIcon.sprite;
         selected = temp;
         //Change new selected to "selected" sprite
@@ -70,6 +78,8 @@ public class Inventory
     public void SelectNext()
     {
         //Change previously selected to none
+        if (Items[selected] != null)
+            Items[selected].SetPosition(new Vector3(-100, -100, -100));
         Slots[selected].GetComponent<Image>().sprite = notSelectedIcon.sprite;
         selected++;
         if (selected > 9)
@@ -81,6 +91,8 @@ public class Inventory
     public void SelectPrevious()
     {
         //Change previously selected to none
+        if (Items[selected] != null)
+            Items[selected].SetPosition(new Vector3(-100, -100, -100));
         Slots[selected].GetComponent<Image>().sprite = notSelectedIcon.sprite;
         selected--;
         if (selected < 0)
@@ -94,12 +106,12 @@ public class Inventory
         //Scroll up
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            SelectNext();
+            SelectPrevious();
         }
         //Scroll down
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            SelectPrevious();
+            SelectNext();
         }
 
         if (Input.GetKey(KeyCode.Alpha1))
@@ -122,6 +134,12 @@ public class Inventory
             Select(8);
         else if (Input.GetKey(KeyCode.Alpha0))
             Select(9);
+
+        if (Items[selected] != null)
+        {
+            Items[selected].SetPosition(GameObject.Find("mixamorig:RightHandIndex1").transform.position);
+            Items[selected].SetRotationEuler(GameObject.Find("mixamorig:RightHandIndex1").transform.rotation.eulerAngles);
+        }
 
     }
 

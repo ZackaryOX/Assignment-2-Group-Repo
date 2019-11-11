@@ -10,6 +10,7 @@ public class Player : Entity
     public Player(GameObject thisobject, GameObject temphead, Inventory tempinv) : base(thisobject)
     {
         Head = temphead;
+        
         ThisInput = new PlayerInput(thisobject, temphead);
         ThisStamina = new Stamina(100, 12.5f, 40.0f);
         ThisInventory = tempinv;
@@ -20,7 +21,7 @@ public class Player : Entity
         Health = 100;
         Sanity = 100;
         AllPlayers.Add(PlayerNumber, this);
-
+        this.SetPosition(GameObject.Find("Spawn" + PlayerNumber.ToString()).transform.position);
     }
 
 

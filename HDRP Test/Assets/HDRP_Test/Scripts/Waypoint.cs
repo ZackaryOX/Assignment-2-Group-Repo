@@ -15,6 +15,9 @@ public class Waypoint : MonoBehaviour
     {
         if (Vector3.Distance(player.transform.position, this.transform.position) < 1)
         {
+            Player.AllPlayers[0].AdvanceLevel();
+            Player.AllPlayers[0].AdvanceLevel();
+            UIManager.PlayerStateUI++;
             this.gameObject.SetActive(false);
         }
     }

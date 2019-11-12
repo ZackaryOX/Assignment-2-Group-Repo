@@ -25,17 +25,11 @@ public class Character : MonoBehaviour
         Player1Stats = new StatObserver(Player1);
         Player1Score = new ScoreObserver(Player1);
         Player1.SetState(new TeachWalkState());
-        
     }
 
     void Update()
     {
-        hotbar.Update();
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Player1.AdvanceLevel();
-        }
-        
+        hotbar.Update();        
     }
 
     void LateUpdate()

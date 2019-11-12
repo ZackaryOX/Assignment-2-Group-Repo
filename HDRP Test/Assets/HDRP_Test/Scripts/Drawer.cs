@@ -75,7 +75,6 @@ public class Drawer : MonoBehaviour
         if (triggerAnim == true)
         {
             objReference.transform.position = Vector3.Lerp(orig, newP, lerpT);
-            Debug.Log("1");
             if (lerpT == 1.0f)
             {
                 switchBool = true;
@@ -89,7 +88,6 @@ public class Drawer : MonoBehaviour
             {
                 switchBool = false;
             }
-            Debug.Log("2");
         }
     }
     void Update()

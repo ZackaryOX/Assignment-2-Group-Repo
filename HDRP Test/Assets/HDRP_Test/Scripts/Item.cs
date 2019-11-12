@@ -20,6 +20,8 @@ public class Item : MonoBehaviour
         {
             //Debug.Log(ThisItem.GetPosition());
             Player.AllPlayers[0].AddItemToInventory(ThisItem.GetName());
+            transform.parent = null;
+            GetComponent<MeshCollider>().isTrigger = true;
             GetComponent<mouseHovor>().enabled = false;
         }
     }

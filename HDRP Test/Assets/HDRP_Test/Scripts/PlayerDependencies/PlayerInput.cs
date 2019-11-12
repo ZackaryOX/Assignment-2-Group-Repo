@@ -49,7 +49,7 @@ public class PlayerInput
     //For Camera
     private float speedH = 4.0f;
     private float speedV = 4.0f;
-    private float MaxPitch = 45.0f;
+    private float MaxPitch = 65.0f;
     private float MaxYaw = 90.0f;
     private float yaw = 0.0f;
     private float pitch = 0.0f;
@@ -183,11 +183,13 @@ public class PlayerInput
         float CurrentSpeed = 0;
         Vector3 Tempjumpvec;
 
-        if(currentstate.GetWalk())
-        Vertical += GetInput(KeyCode.W);
-        Vertical -= GetInput(KeyCode.S);
-        Horizontal += GetInput(KeyCode.D);
-        Horizontal -= GetInput(KeyCode.A);
+        if (currentstate.GetWalk())
+        {
+            Vertical += GetInput(KeyCode.W);
+            Vertical -= GetInput(KeyCode.S);
+            Horizontal += GetInput(KeyCode.D);
+            Horizontal -= GetInput(KeyCode.A);
+        }
 
         if(currentstate.GetRun())
         Running += GetInput(KeyCode.LeftShift);

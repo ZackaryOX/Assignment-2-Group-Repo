@@ -26,6 +26,7 @@ public class ForDoor : MonoBehaviour
             if(ThisDoor.GetIsOpened() == false)
             {
                 ThisDoor.OpenDoor();
+               
             }
             else if(ThisDoor.GetIsOpened() == true)
             {
